@@ -1,0 +1,21 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+    name: accountservice
+    namespace: kenfo-test
+    labels:
+        app: accountservice
+        version: v1
+spec:
+    replicas: 1
+    template: 
+        metadata: 
+            labels: 
+                app: accountservice
+        spec:
+            containers:
+              - name: accountservice
+                image: kenfo/test:latest
+                imagePullPolicy: Always
+                ports:
+                - containerPort: 6767

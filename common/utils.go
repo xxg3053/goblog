@@ -23,13 +23,13 @@ func GetIP() string {
 	panic("Unable to determine local IP address (non loopback). Exiting.")
 }
 
-type result struct {
+type Result struct {
 	Code int `json:"code"`
 	Msg string `json:"msg"`
 	Data interface{} `json:"data"`
 } 
 func WriteJsonResponse(w http.ResponseWriter, status int, data interface{}) {
-	rt,_ := json.Marshal(&result{Code:status, Msg:"response success", Data:data})
+	rt,_ := json.Marshal(&Result{Code:status, Msg:"response success", Data:data})
 
 	w.Header().Set("Content-Type", "application/json")
 	w.Header().Set("Content-Length", strconv.Itoa(len(rt)))
